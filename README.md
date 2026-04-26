@@ -43,11 +43,17 @@ O HTTP (Hyper Text Transfer Protocol) é o protocolo padrão para a troca de men
 
 ## 6.​ Em uma aplicação web baseada no Spring MVC, o desenvolvedor cria classes anotadas com @Controller (ou @RestController no futuro) e define métodos para responder a URLs específicas. Entretanto, quando um usuário acessa uma URL no navegador (por exemplo, digitando /produtos), o navegador não “chama diretamente” o método do controller. Faça uma pesquisa e considerando a arquitetura do Spring MVC explique como o Spring consegue interceptar a requisição HTTP, decidir qual controller e qual método devem ser executados e, por fim, gerar a resposta ao cliente. 
 
-Embora o navegador não chame o método do controller diretamente, o Spring intercepta a requisição através de um fluxo coordenado:
-- **Interceptação: Um servidor web (como o Tomcat) recebe a requisição HTTP bruta.
-- **Conversão: Os dados da requisição são convertidos para objetos Java (como o HttpServletRequest).
-- **Roteamento (DispatcherServlet): O Spring utiliza um "mapeador de rotas" que analisa a URL (ex: /produtos) e o verbo HTTP para decidir qual classe anotada com @Controller e qual método (anotado com @GetMapping, por exemplo) deve tratar aquele pedido.
-- **Execução e Resposta: O Spring invoca o método, passa os parâmetros necessários e o retorno do método é processado para gerar a resposta final ao cliente.
+Embora o navegador não chame diretamente o método do controller, o Spring processa a requisição através de um fluxo estruturado:
+
+Interceptação: Um servidor web (como o Tomcat) recebe a requisição HTTP bruta enviada pelo cliente.
+
+Conversão: Os dados dessa requisição são convertidos em objetos Java, como o HttpServletRequest, para que o framework possa manipulá-los.
+
+Roteamento (DispatcherServlet): O DispatcherServlet atua como um Front Controller, interceptando a requisição e utilizando o HandlerMapping para identificar qual controller e qual método devem ser executados com base na URL e no método HTTP (GET, POST, etc.).
+
+Execução (HandlerAdapter): O HandlerAdapter fica responsável por invocar o método correspondente no controller, passando os parâmetros necessários.
+
+Resposta: O retorno do método (como um objeto de dados ou o nome de uma página) é processado para gerar a resposta final (em JSON, HTML ou outro formato) que será enviada de volta ao navegador.
 
 ## 7.​ Em Java, é comum encontrarmos códigos que utilizam anotações como @Override, @Deprecated ou @SuppressWarnings. Diferentemente de comentários, essas marcações não servem apenas para documentação, mas podem influenciar o comportamento do compilador, das ferramentas e até da execução do programa. Considerando esse contexto, explique o que são anotações em Java e qual é o seu papel no desenvolvimento de aplicações modernas. 
 
