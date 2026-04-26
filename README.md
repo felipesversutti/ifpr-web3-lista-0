@@ -12,7 +12,7 @@ IP (Camada de Internet): Responsável por rotear os pacotes de dados pela rede a
 
 ## 2. Alguns autores usam o termo “arquitetura da web” para se referir a como as camadas tecnológicas da web estão organizadas e aos princípios que definem a troca de informações entre essas camadas. Por questões didáticas e de simplificação, convencionou-se chamar essa arquitetura de “arquitetura cliente x servidor” ou arquitetura “requisição x resposta”. Explique de forma simplificada como funciona essa arquitetura. 
 
-Essa arquitetura, também chamada de "Requisição x Resposta", funciona de forma que a comunicação é sempre iniciada pelo cliente (como um navegador). O processo básico consiste em: O cliente solicita um recurso específico (uma página, uma imagem, etc.) <-> O servidor recebe essa solicitação, processa e responde devolvendo o recurso solicitado ou uma mensagem de erro.
+Essa arquitetura, funciona de forma que a comunicação é sempre iniciada pelo cliente (como um navegador). O processo básico consiste em: O cliente solicita um recurso específico (uma página, uma imagem, etc.) <-> O servidor recebe essa solicitação, processa e responde devolvendo o recurso solicitado ou uma mensagem de erro.
 
 ## 3.​ Em uma arquitetura web, qual o papel desempenhado pelo protocolo HTTP?​
 
@@ -33,7 +33,9 @@ O HTTP (Hyper Text Transfer Protocol) é o protocolo padrão para a troca de men
 
 ## 5.​ Em uma arquitetura web é sempre o cliente quem inicia o processo de comunicação: o cliente requisita, o servidor responde. Contudo, aplicações web como Gmail ou Instagram, “empurram” informações novas ao cliente, tais como um novo e-mail ou uma “curtida” em uma determinada publicação. Hipoteticamente, quais estratégias poderiam ser empregadas para se chegar a esse resultado? 
 
-WebSockets: Fornece comunicação bidirecional em tempo real entre cliente e servidor. Long Polling (Pool de espera): O cliente faz uma requisição e o servidor a mantém aberta até que haja uma nova informação para enviar. Periodic Ping (Ajax): O cliente "pergunta" ao servidor periodicamente se há novidades através de APIs assíncronas.
+WebSockets: Fornece comunicação bidirecional em tempo real entre cliente e servidor. 
+Long Polling (Pool de espera): O cliente faz uma requisição e o servidor a mantém aberta até que haja uma nova informação para enviar. 
+Periodic Ping (Ajax): O cliente "pergunta" ao servidor periodicamente se há novidades através de APIs assíncronas.
 
 ### SOBRE O FRAMEWORK SPRING​
 
@@ -41,7 +43,11 @@ WebSockets: Fornece comunicação bidirecional em tempo real entre cliente e ser
 
 ## 6.​ Em uma aplicação web baseada no Spring MVC, o desenvolvedor cria classes anotadas com @Controller (ou @RestController no futuro) e define métodos para responder a URLs específicas. Entretanto, quando um usuário acessa uma URL no navegador (por exemplo, digitando /produtos), o navegador não “chama diretamente” o método do controller. Faça uma pesquisa e considerando a arquitetura do Spring MVC explique como o Spring consegue interceptar a requisição HTTP, decidir qual controller e qual método devem ser executados e, por fim, gerar a resposta ao cliente. 
 
-Embora o navegador não chame o método do controller diretamente, o Spring intercepta a requisição através de um fluxo coordenado:Interceptação: Um servidor web (como o Tomcat) recebe a requisição HTTP bruta.Conversão: Os dados da requisição são convertidos para objetos Java (como o HttpServletRequest).Roteamento (DispatcherServlet): O Spring utiliza um "mapeador de rotas" que analisa a URL (ex: /produtos) e o verbo HTTP para decidir qual classe anotada com @Controller e qual método (anotado com @GetMapping, por exemplo) deve tratar aquele pedido.Execução e Resposta: O Spring invoca o método, passa os parâmetros necessários e o retorno do método é processado para gerar a resposta final ao cliente.
+Embora o navegador não chame o método do controller diretamente, o Spring intercepta a requisição através de um fluxo coordenado:
+- **Interceptação: Um servidor web (como o Tomcat) recebe a requisição HTTP bruta.
+- **Conversão: Os dados da requisição são convertidos para objetos Java (como o HttpServletRequest).
+- **Roteamento (DispatcherServlet): O Spring utiliza um "mapeador de rotas" que analisa a URL (ex: /produtos) e o verbo HTTP para decidir qual classe anotada com @Controller e qual método (anotado com @GetMapping, por exemplo) deve tratar aquele pedido.
+- **Execução e Resposta: O Spring invoca o método, passa os parâmetros necessários e o retorno do método é processado para gerar a resposta final ao cliente.
 
 ## 7.​ Em Java, é comum encontrarmos códigos que utilizam anotações como @Override, @Deprecated ou @SuppressWarnings. Diferentemente de comentários, essas marcações não servem apenas para documentação, mas podem influenciar o comportamento do compilador, das ferramentas e até da execução do programa. Considerando esse contexto, explique o que são anotações em Java e qual é o seu papel no desenvolvimento de aplicações modernas. 
 
