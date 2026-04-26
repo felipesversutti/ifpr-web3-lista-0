@@ -34,7 +34,7 @@ O HTTP (Hyper Text Transfer Protocol) é o protocolo padrão para a troca de men
 ## 5.​ Em uma arquitetura web é sempre o cliente quem inicia o processo de comunicação: o cliente requisita, o servidor responde. Contudo, aplicações web como Gmail ou Instagram, “empurram” informações novas ao cliente, tais como um novo e-mail ou uma “curtida” em uma determinada publicação. Hipoteticamente, quais estratégias poderiam ser empregadas para se chegar a esse resultado? 
 
 - WebSockets: Fornece comunicação bidirecional em tempo real entre cliente e servidor. 
-- Long Polling (Pool de espera): O cliente faz uma requisição e o servidor a mantém aberta até que haja uma nova informação para enviar. 
+- Long Polling: O cliente faz uma requisição e o servidor a mantém aberta até que haja uma nova informação para enviar. 
 - Periodic Ping (Ajax): O cliente "pergunta" ao servidor periodicamente se há novidades através de APIs assíncronas.
 
 ### SOBRE O FRAMEWORK SPRING​
