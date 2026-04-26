@@ -51,11 +51,14 @@ Embora o navegador não chame o método do controller diretamente, o Spring inte
 
 ## 7.​ Em Java, é comum encontrarmos códigos que utilizam anotações como @Override, @Deprecated ou @SuppressWarnings. Diferentemente de comentários, essas marcações não servem apenas para documentação, mas podem influenciar o comportamento do compilador, das ferramentas e até da execução do programa. Considerando esse contexto, explique o que são anotações em Java e qual é o seu papel no desenvolvimento de aplicações modernas. 
 
-Na prática, as anotações funcionam como etiquetas (metadados) que a gente coloca em cima das classes e métodos para passar instruções extras. Elas não mudam a lógica do que o código faz, mas servem para 'avisar' o compilador ou o Spring sobre como aquela parte deve se comportar. É assim que o framework consegue automatizar tarefas como a conexão com o banco de dados ou a injeção de dependências sem que a gente precise configurar tudo manualmente.
+Na prática, as anotações funcionam como etiquetas (metadados) que colocamos em cima das classes e métodos para passar instruções extras. Elas não mudam a lógica do que o código faz, mas servem para 'avisar' o compilador ou o Spring sobre como aquela parte deve se comportar. É assim que o framework consegue automatizar tarefas como a conexão com o banco de dados ou a injeção de dependências sem que a gente precise configurar tudo manualmente.
 
 ## 8.​ Em aplicações baseadas no Spring Framework, é comum criar classes simples, sem código explícito de configuração, apenas utilizando anotações como @Component, @Controller, @Service ou @Repository. Mesmo assim, o Spring consegue instanciar objetos, injetar dependências e organizar a aplicação automaticamente. Considerando esse cenário, explique como as anotações do Spring permitem que o framework identifique, gerencie e conecte os componentes da aplicação sem que o desenvolvedor precise criar objetos manualmente. 
 
-O Spring consegue gerenciar componentes sem configuração manual através do seu Container e das anotações de especialização:
+O Spring consegue gerenciar os componentes da aplicação de forma automática através do seu Container e do uso de anotações específicas. Funciona da seguinte maneira:
 
-- Identificação: Ao usar anotações como @Component, @Controller, @Service ou @Repository, o desenvolvedor sinaliza que aquela classe deve ser um Bean gerenciado pelo Spring.Ciclo de Vida: O Spring Container assume a responsabilidade de instanciar o objeto, configurar seus atributos iniciais e destruí-lo quando necessário.
-- Injeção de Dependência: O framework identifica quais objetos uma classe precisa e os "injeta" automaticamente (passa os objetos necessários para o bean), eliminando a necessidade do desenvolvedor usar o operador new manualmente.
+Identificação: Quando marcamos uma classe com anotações como @Component, @Service, @Controller ou @Repository, estamos sinalizando para o framework que aquela classe é um componente importante (um Bean) que deve ficar sob a supervisão do Spring.
+
+Ciclo de Vida: A partir dessa identificação, o Spring Container assume a responsabilidade de gerenciar o objeto. Ele decide o momento certo de instanciar a classe, realizar as configurações iniciais e remover o objeto da memória quando ele não for mais necessário.
+
+Injeção de Dependência: O framework identifica quais outros objetos uma classe precisa para funcionar e os conecta automaticamente. Isso elimina a necessidade de quem está desenvolvendo, criar instâncias manualmente usando o operador new, o que diminui o acoplamento entre as partes do sistema e facilita a manutenção do código.
